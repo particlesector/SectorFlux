@@ -1,19 +1,122 @@
+# ===========================================
+# SectorFlux .gitignore
+# ===========================================
+
+# ---> Build Directories
+build/
+out/
+cmake-build-*/
+Release/
+Debug/
+x64/
+x86/
+
+# ---> C++ Compiled Files
+*.d
+*.slo
+*.lo
+*.o
+*.obj
+*.gch
+*.pch
+
+# ---> Libraries
+*.so
+*.dylib
+*.dll
+*.lai
+*.la
+*.a
+*.lib
+
+# ---> Executables
+*.exe
+*.out
+*.app
+
+# ---> CMake
 CMakeLists.txt.user
 CMakeCache.txt
-CMakeFiles
-CMakeScripts
-Testing
+CMakeFiles/
+CMakeScripts/
+Testing/
 Makefile
 cmake_install.cmake
 install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
-_deps
+_deps/
 CMakeUserPresets.json
 
-# CLion
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#cmake-build-*
+# ---> Generated Files
+src/embedded_ui.hpp
+
+# ---> Visual Studio
+.vs/
+*.vcxproj.user
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.VC.opendb
+ipch/
+*.ilk
+*.pdb
+
+# ---> VS Code
+.vscode/
+*.code-workspace
+
+# ---> JetBrains IDEs
+.idea/
+*.iml
+
+# ---> Vim/Neovim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# ---> Emacs
+*~
+\#*\#
+.#*
+
+# ---> macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+
+# ---> Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+nul
+
+# ---> SQLite Databases
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# ---> Python (for embed_ui.py)
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.pyc
+
+# ---> Logs
+*.log
+
+# ---> Testing / Debug
+test_payload.json
+
+# ---> Claude Code / AI Tools
+.claude/
+.agent/

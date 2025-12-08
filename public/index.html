@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--
+  SectorFlux - LLM Proxy and Analytics
+  Copyright (c) 2025 ParticleSector.com
+  Dual-licensed: GPL-3.0 / Commercial
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SectorFlux Control Tower</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>SectorFlux Control Tower</h1>
+            <div class="status-indicator">
+                <label class="switch" style="margin-right: 15px;">
+                    <input type="checkbox" id="cacheToggle" checked>
+                    <span class="slider round"></span>
+                </label>
+                <span id="cacheStatusText" style="margin-right: 15px; font-size: 0.9em;">Cache: On</span>
+                <span class="dot"></span> Live
+                <button id="shutdownBtn" class="btn-danger btn-sm" style="margin-left: 10px;">Shutdown Server</button>
+            </div>
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+            <button class="tab-btn" data-tab="chat">Chat Playground</button>
+        </div>
+
+        <!-- Dashboard View -->
+        <div id="dashboard-view" class="tab-content active">
+            <!-- Metrics Dashboard -->
+            <div class="metrics-dashboard">
+                <div class="metric-card">
+                    <h3>Total Requests</h3>
+                    <p id="metric-total">0</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Avg Latency</h3>
+                    <p id="metric-latency">0ms</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Cache Hit Rate</h3>
+                    <p id="metric-cache">0%</p>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="logsTable">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>ID</th>
+                            <th>Timestamp</th>
+                            <th>Model</th>
+                            <th>Input Tokens</th>
+                            <th>Output Tokens</th>
+                            <th>Duration</th>
+                            <th>TTFT</th>
+                            <th>TPS</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Logs will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Chat View -->
+        <div id="chat-view" class="tab-content">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="model-selector">
+                        <label for="model-select">Model:</label>
+                        <select id="model-select">
+                            <option value="" disabled selected>Loading...</option>
+                        </select>
+                        <button id="refresh-models-btn" class="btn-sm view-btn" title="Refresh Models">↻</button>
+                    </div>
+                    <div class="running-model-indicator">
+                        <span class="detail-label" style="display:inline;">Running:</span>
+                        <span id="running-model-name" class="status-badge status-200">None</span>
+                    </div>
+                </div>
+                <div id="chat-history" class="chat-history">
+                    <!-- Messages will appear here -->
+                    <div class="message system-message">
+                        Welcome to the Chat Playground. Messages sent here go through SectorFlux!
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <textarea id="chat-input" placeholder="Type a message..."></textarea>
+                    <button id="send-btn" class="btn-primary">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="footer-content">
+            <span class="footer-version" id="footer-version">SectorFlux</span>
+            <span class="footer-divider">|</span>
+            <a href="https://github.com/particlesector/sectorflux" target="_blank" rel="noopener">GitHub</a>
+            <span class="footer-divider">|</span>
+            <a href="https://sectorflux.particlesector.com" target="_blank" rel="noopener">Website</a>
+            <span class="footer-divider">|</span>
+            <span class="footer-copyright">&copy; 2025 ParticleSector.com</span>
+        </div>
+    </footer>
+
+    <!-- Details Modal -->
+    <div id="details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Log Details</h2>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container"></div>
+
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
