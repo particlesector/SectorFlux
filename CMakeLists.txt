@@ -39,6 +39,8 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(json)
 
 # cpp-httplib (HTTP Client)
+# Disable OpenSSL - not needed for local Ollama proxy, avoids DLL dependencies
+set(HTTPLIB_USE_OPENSSL_IF_AVAILABLE OFF CACHE BOOL "" FORCE)
 FetchContent_Declare(
     httplib
     GIT_REPOSITORY https://github.com/yhirose/cpp-httplib.git
