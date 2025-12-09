@@ -18,6 +18,13 @@
 
 SectorFlux is a native C++ reverse proxy that sits between your application and Ollama, providing real-time monitoring, logging, and debugging capabilities with minimal resource overhead. Think of it as **htop for your local AI**.
 
+<p align="center">
+  <img src="screenshots/dashboard.jpeg" alt="SectorFlux Dashboard" width="100%">
+</p>
+<p align="center">
+  <img src="screenshots/chat_playground.jpeg" alt="SectorFlux Chat Playground" width="100%">
+</p>
+
 ## Why SectorFlux?
 
 When developing with local LLMs, you need visibility into what's happening:
